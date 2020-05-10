@@ -1,0 +1,30 @@
+.main {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.card-size {
+	width: 200px;
+	height: 200px;
+}
+
+.card-size img {
+	height: 100px;
+}
+
+.slider-section {
+	width: 90%;
+}
+
+.MuiInputBase-inputMarginDense {
+	text-align: center
+}
