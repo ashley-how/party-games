@@ -2,7 +2,7 @@ import React from 'react';
 
 const DontDoItGame = () => {
     return (
-        <div>
+        <div className="main">
             <h2>DontDoItGame</h2>
         </div>
     );

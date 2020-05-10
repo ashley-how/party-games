@@ -1,7 +1,5 @@
 .main {
-	position: absolute;
-	top: 0;
-	left: 0;
+	padding: 100px 0;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -17,7 +15,8 @@
 	height: 200px;
 }
 
-.card-size img {
+.card-media {
+	width: 100px;
 	height: 100px;
 }
 
@@ -27,4 +26,8 @@
 
 .MuiInputBase-inputMarginDense {
 	text-align: center
+}
+
+.MuiCard-root {
+	text-align: -webkit-center;
 }

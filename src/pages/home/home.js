@@ -42,12 +42,12 @@ const Home = () => {
                     <Card>
                         <CardMedia
                             className="card-media"
-                            image="./assets/guess.jpg"
+                            image="./assets/guess.png"
                             title="Guess who I am!"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                Guess who I am!
+                                Guess me!
                             </Typography>
                         </CardContent>
                     </Card>
