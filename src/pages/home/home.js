@@ -21,7 +21,15 @@ const Home = () => {
     return (
         <div className="main">
             <div className="card-size">
-                <Link to={'/dontDoItGame'}>
+                <Link
+                    to={{
+                        pathname: '/dontDoItGame',
+                        aboutProps: {
+                            isLocalPlay: localPlay,
+                            numOfPlayers: localPlay ? null : numOfPlayers
+                        }
+                    }}
+                >
                     <Card>
                         <CardMedia
                             className="card-media"
@@ -38,7 +46,15 @@ const Home = () => {
             </div>
 
             <div className="card-size">
-                <Link to={'/guessMe'}>
+                <Link
+                    to={{
+                        pathname: '/guessMeGame',
+                        aboutProps: {
+                            isLocalPlay: localPlay,
+                            numOfPlayers: localPlay ? null : numOfPlayers
+                        }
+                    }}
+                >
                     <Card>
                         <CardMedia
                             className="card-media"

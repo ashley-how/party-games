@@ -7,11 +7,6 @@ const Header = () => (
         <Link to={'/'} className="nav-link">
             <h2>Party Games</h2>
         </Link>
-
-        <nav>
-            <Link to={'/dontDoItGame'} className="nav-link">ActionGame</Link>
-            <Link to={'/guessMeGame'} className="nav-link">GuessGame</Link>
-        </nav>
     </header>
 );
 
