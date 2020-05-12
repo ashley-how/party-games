@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './home.css'
 import { Link } from 'react-router-dom';
 import {
@@ -18,6 +18,13 @@ import {
 const Home = () => {
     const [localPlay, setLocalPlay] = useState(true);
     const [numOfPlayers, setNumOfPlayers] = useState(2);
+
+    useEffect(() => {
+        fetch('/time').then(res => res.json()).then(data => {
+          console.log(data.time);
+        });
+      }, []);
+
     return (
         <div className="main">
             <div className="card-size">
