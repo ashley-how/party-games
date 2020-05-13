@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import './home.css'
 import { Link } from 'react-router-dom';
 import {
@@ -18,16 +18,19 @@ import {
 const Home = () => {
     const [localPlay, setLocalPlay] = useState(true);
     const [numOfPlayers, setNumOfPlayers] = useState(2);
+    const [currentTime, setCurrentTime] = useState(0);
 
     useEffect(() => {
         fetch('/time').then(res => res.json()).then(data => {
-          console.log(data.time);
+            console.log(data.time);
+            setCurrentTime(data.time);
         });
-      }, []);
+    }, []);
 
     return (
         <div className="main">
             <div className="card-size">
+                <p>The current time is {currentTime}.</p>
                 <Link
                     to={{
                         pathname: '/dontDoItGame',
