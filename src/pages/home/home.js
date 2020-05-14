@@ -18,10 +18,10 @@ import {
 const Home = () => {
     const [localPlay, setLocalPlay] = useState(true);
     const [numOfPlayers, setNumOfPlayers] = useState(2);
-    const [currentTime, setCurrentTime] = useState(0);
+    const [currentTime, setCurrentTime] = useState(null);
 
     useEffect(() => {
-        fetch('/time').then(res => res.json()).then(data => {
+        fetch('https://party-games-api.herokuapp.com/time').then(res => res.json()).then(data => {
             console.log(data.time);
             setCurrentTime(data.time);
         });
@@ -29,8 +29,12 @@ const Home = () => {
 
     return (
         <div className="main">
-            <div className="card-size">
+            {
+                currentTime &&
                 <p>The current time is {currentTime}.</p>
+            }
+
+            <div className="card-size">
                 <Link
                     to={{
                         pathname: '/dontDoItGame',
