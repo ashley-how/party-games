@@ -18,20 +18,20 @@ import {
 const Home = () => {
     const [localPlay, setLocalPlay] = useState(true);
     const [numOfPlayers, setNumOfPlayers] = useState(2);
-    const [currentTime, setCurrentTime] = useState(null);
+    const [actionCard, setActionCard] = useState(null);
 
     useEffect(() => {
-        fetch('https://party-games-api.herokuapp.com/time').then(res => res.json()).then(data => {
-            console.log(data.time);
-            setCurrentTime(data.time);
+        fetch('/getActionCard').then(res => res.json()).then(data => {
+            console.log(data.result);
+            setActionCard(data.result);
         });
     }, []);
 
     return (
         <div className="main">
             {
-                currentTime &&
-                <p>The current time is {currentTime}.</p>
+                actionCard &&
+                <p>Card picked is {actionCard}.</p>
             }
 
             <div className="card-size">
@@ -100,17 +100,23 @@ const Home = () => {
                             />
                         }
                         label={
-                            localPlay ? <div>Local Play</div> : <div>Online Play</div>
+                            localPlay ? <b>Offline mode</b> : <b>Online mode</b>
                         }
                     />
                 </FormGroup>
             </div>
 
             {
+                localPlay ?
+                    <div>Works the same as physical cards. Player can only see the cards of other players shown on other players' phones.</div> :
+                    <div>Player can see other players' cards on their own phone but not their own card.</div>
+            }
+
+            {
                 !localPlay &&
                 <div className="slider-section">
                     <div>
-                        Number of players:
+                        <b>Number of players:</b>
                         <Grid item>
                             <Input
                                 className="input-align"
