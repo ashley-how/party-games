@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom'
 
 const GuessMeGame = props => {
-    console.log(props.location.aboutProps)
-    if (props.location.aboutProps.isLocalPlay) {
-        return (
-            <div className="main">
-                <h2>GuessMeGame</h2>
-                <div>Local Play</div>
-            </div>
-        );
-    }
+    try {
+        if (props.location.aboutProps.isLocalPlay) {
+            return (
+                <div className="main">
+                    <h2>Guess Me!</h2>
+                    <div>Offline Mode</div>
+                </div>
+            );
+        }
 
-    else {
-        return (
-            <div className="main">
-                <h2>GuessMeGame</h2>
-                <div>Online Play:</div>
-                <div>{props.location.aboutProps.numOfPlayers}</div>
-            </div>
-        );
+        else {
+            return (
+                <div className="main">
+                    <h2>Guess Me!</h2>
+                    <div>Online Mode</div>
+                    <div>{props.location.aboutProps.numOfPlayers}</div>
+                </div>
+            );
+        }
+    }
+    catch (e) {
+        return <Redirect to='/' />;
     }
 }
 

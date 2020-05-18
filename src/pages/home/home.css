@@ -13,6 +13,7 @@
 .card-size {
 	width: 200px;
 	height: 200px;
+	padding-top: 20px;
 }
 
 .card-media {
@@ -21,6 +22,11 @@
 }
 
 .slider-section {
+	width: 90%;
+	padding: 20px 0;
+}
+
+.mode-card {
 	width: 90%;
 }
 

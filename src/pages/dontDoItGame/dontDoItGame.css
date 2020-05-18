@@ -1,0 +1,13 @@
+.action-card {
+    width: 200px;
+    height: 300px;
+    display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.button-section {
+    padding: 20px 0;
+}
