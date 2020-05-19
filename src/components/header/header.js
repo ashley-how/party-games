@@ -5,11 +5,15 @@ import './header.css';
 const Header = () => (
     <header className="header">
         <Link to={'/'} className="nav-link">
-            <img 
-            src="./assets/party-games-logo.png" 
-            className="logo-header"
-            height="40" />
-            <h2>Party Games</h2>
+            <div className="header-logo">
+                <img
+                    src="./assets/party-games-logo.png"
+                    className="logo-header"
+                    height="40" />
+                <span>
+                    <h2>Party Games</h2>
+                </span>
+            </div>
         </Link>
     </header>
 );

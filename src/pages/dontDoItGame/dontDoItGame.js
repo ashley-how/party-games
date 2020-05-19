@@ -56,7 +56,7 @@ const DontDoItGame = props => {
                                 <Button
                                     variant="contained"
                                     color="secondary"
-                                    onClick={() =>newGame()}
+                                    onClick={() => newGame()}
                                 >
                                     New Game?
                                 </Button> :
