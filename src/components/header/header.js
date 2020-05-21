@@ -8,6 +8,7 @@ const Header = () => (
             <div className="header-logo">
                 <img
                     src="./assets/party-games-logo.png"
+                    alt="Party Game App"
                     className="logo-header"
                     height="40" />
                 <span>

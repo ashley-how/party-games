@@ -6,7 +6,7 @@ import Header from './components/header/header';
 import Home from './pages/home/home';
 import Admin from './pages/admin/admin';
 import DontDoItGame from './pages/dontDoItGame/dontDoItGame';
-import GuessMeGame from './pages/guessMeGame/guessMeGame';
+import WhoAmIGame from './pages/whoAmIGame/whoAmIGame';
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/dontDoItGame' component={DontDoItGame} />
-            <Route path='/guessMeGame' component={GuessMeGame} />
+            <Route path='/whoAmIGame' component={WhoAmIGame} />
             <Route path='/admin' component={Admin} />
         </Switch>
       </div>

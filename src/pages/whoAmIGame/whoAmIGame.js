@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom'
-import './dontDoItGame.css'
+import './whoAmIGame.css'
 import CardService from '../../services/cardService';
 import {
     Button,
     Card
 } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
-import { cleanup } from '@testing-library/react';
 
-const DontDoItGame = props => {
+const WhoAmIGame = props => {
     const cardService = new CardService();
-    const [actionCard, setActionCard] = useState(null);
+    const [characterCard, setCharacterCard] = useState(null);
     const [points, setPoints] = useState(0);
     const [loader, setLoader] = useState(false);
 
     const abortCtrl = new AbortController();
 
     const drawNewCard = async () => {
-        let data = await cardService.getActionCard();
-        setActionCard(data);
+        let data = await cardService.getCharacterCard();
+        setCharacterCard(data);
         setPoints(points - 1);
     }
 
     const startGame = () => {
         setLoader(true);
         const timer = setTimeout(async () => {
-            let data = await cardService.getActionCard(abortCtrl.signal);
-            setActionCard(data);
+            let data = await cardService.getCharacterCard(abortCtrl.signal);
+            setCharacterCard(data);
             setLoader(false);
         }, 1500);
         return () => {
@@ -37,7 +36,7 @@ const DontDoItGame = props => {
     }
 
     const newGame = () => {
-        setActionCard(null);
+        setCharacterCard(null);
         setPoints(0);
     }
 
@@ -45,7 +44,7 @@ const DontDoItGame = props => {
         if (props.location.aboutProps.isLocalPlay) {
             return (
                 <div className="main">
-                    <h2>Don't do it!</h2>
+                    <h2>Who am I?</h2>
 
                     <HashLoader
                         size={50}
@@ -57,7 +56,7 @@ const DontDoItGame = props => {
                         !loader &&
                         <>
                             {
-                                actionCard ?
+                                characterCard ?
                                     <>
                                         <div>
                                             Points: {points}
@@ -66,11 +65,11 @@ const DontDoItGame = props => {
                                         <Card>
                                             {
                                                 points == -10 ?
-                                                    <div className="action-card">
+                                                    <div className="character-card">
                                                         You lose!
                                                         </div> :
-                                                    <div className="action-card">
-                                                        {actionCard}
+                                                    <div className="character-card">
+                                                        {characterCard}
                                                     </div>
                                             }
                                         </Card>
@@ -100,8 +99,9 @@ const DontDoItGame = props => {
                                     <>
                                         <div className="game-logo">
                                             <img
-                                                src="./assets/dont-do-it.jpg"
-                                                alt="Don't do it!"
+                                                height="150"
+                                                src="./assets/guess.png"
+                                                alt="Who am I?"
                                             />
                                         </div>
 
@@ -114,7 +114,7 @@ const DontDoItGame = props => {
                                             onClick={() => startGame()}
                                         >
                                             Start Game
-                            </Button>
+                                        </Button>
                                     </>
                             }
                         </>
@@ -126,7 +126,7 @@ const DontDoItGame = props => {
         else {
             return (
                 <div className="main">
-                    <h2>Don't do it!</h2>
+                    <h2>Who am I?</h2>
                     <div>Online Mode</div>
                     <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
                     <h1>Work-in-progress</h1>
@@ -139,4 +139,4 @@ const DontDoItGame = props => {
     }
 }
 
-export default DontDoItGame;
+export default WhoAmIGame;

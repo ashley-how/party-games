@@ -49,7 +49,7 @@ const Home = () => {
             <div className="card-size">
                 <Link
                     to={{
-                        pathname: '/guessMeGame',
+                        pathname: '/whoAmIGame',
                         aboutProps: {
                             isLocalPlay: localPlay,
                             numOfPlayers: localPlay ? null : numOfPlayers
@@ -60,11 +60,11 @@ const Home = () => {
                         <CardMedia
                             className="card-media"
                             image="./assets/guess.png"
-                            title="Guess who I am!"
+                            title="Who Am I?"
                         />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                                Guess me!
+                                Who Am I?
                             </Typography>
                         </CardContent>
                     </Card>

@@ -1,6 +1,12 @@
 export default class CardService {
-    getActionCard = () => {
-        return fetch('https://party-games-api.herokuapp.com/getActionCard').then(res => res.json()).then(data => {
+    getActionCard = (signal = null) => {
+        return fetch('https://party-games-api.herokuapp.com/getActionCard', {signal: signal}).then(res => res.json()).then(data => {
+            return data.result;
+        });
+    }
+
+    getCharacterCard = (signal = null) => {
+        return fetch('/getCharacterCard', {signal: signal}).then(res => res.json()).then(data => {
             return data.result;
         });
     }
