@@ -8,6 +8,8 @@ import {
 } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
 
+const winningPoints = 5;
+
 const WhoAmIGame = props => {
     const cardService = new CardService();
     const [characterCard, setCharacterCard] = useState(null);
@@ -19,7 +21,7 @@ const WhoAmIGame = props => {
     const drawNewCard = async () => {
         let data = await cardService.getCharacterCard();
         setCharacterCard(data);
-        setPoints(points - 1);
+        setPoints(points + 1);
     }
 
     const startGame = () => {
@@ -41,16 +43,29 @@ const WhoAmIGame = props => {
     }
 
     try {
-        if (props.location.aboutProps.isLocalPlay) {
+        if (props.location.aboutProps.onlineMode) {
             return (
                 <div className="main">
                     <h2>Who am I?</h2>
+                    <div>Online Mode</div>
+                    <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
+                    <h1>Work-in-progress</h1>
+                </div>
+            );
+        }
 
-                    <HashLoader
-                        size={50}
-                        color="teal"
-                        loading={loader}
-                    />
+        else {
+            return (
+                <div className="main">
+                    <h2>{props.location.aboutProps.gameTitle}</h2>
+
+                    <div className="loader-position">
+                        <HashLoader
+                            size={50}
+                            color="teal"
+                            loading={loader}
+                        />
+                    </div>
 
                     {
                         !loader &&
@@ -64,9 +79,9 @@ const WhoAmIGame = props => {
 
                                         <Card>
                                             {
-                                                points == -10 ?
+                                                points === winningPoints ?
                                                     <div className="character-card">
-                                                        You lose!
+                                                        You win!
                                                         </div> :
                                                     <div className="character-card">
                                                         {characterCard}
@@ -76,7 +91,7 @@ const WhoAmIGame = props => {
 
                                         <div className="button-section">
                                             {
-                                                points == -10 ?
+                                                points === winningPoints ?
                                                     <Button
                                                         className="game-button"
                                                         variant="contained"
@@ -97,15 +112,17 @@ const WhoAmIGame = props => {
                                         </div>
                                     </> :
                                     <>
-                                        <div className="game-logo">
-                                            <img
-                                                height="150"
-                                                src="./assets/guess.png"
-                                                alt="Who am I?"
-                                            />
-                                        </div>
+                                        <img
+                                            height="150"
+                                            src="./assets/guess.png"
+                                            alt="Who am I?"
+                                        />
 
-                                        <div>// Add game intructions here.</div>
+                                        <div className="instruction-card">
+                                            <Card >
+                                                {props.location.aboutProps.gameDescription}
+                                            </Card>
+                                        </div>
 
                                         <Button
                                             className="game-button"
@@ -119,17 +136,6 @@ const WhoAmIGame = props => {
                             }
                         </>
                     }
-                </div>
-            );
-        }
-
-        else {
-            return (
-                <div className="main">
-                    <h2>Who am I?</h2>
-                    <div>Online Mode</div>
-                    <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
-                    <h1>Work-in-progress</h1>
                 </div>
             );
         }

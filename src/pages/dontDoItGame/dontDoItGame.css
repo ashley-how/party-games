@@ -16,6 +16,14 @@
     height: 100px;
 }
 
-.game-logo {
-    padding-bottom: 40px;
+.instruction-card {
+	width: 90%;
+	padding: 40px;
+}
+
+.loader-position {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }

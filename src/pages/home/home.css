@@ -38,3 +38,10 @@
 .MuiCard-root {
 	text-align: -webkit-center;
 }
+
+.loader-position {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

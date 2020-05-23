@@ -7,7 +7,8 @@ import {
     Card
 } from '@material-ui/core';
 import HashLoader from "react-spinners/HashLoader";
-import { cleanup } from '@testing-library/react';
+
+const losingPoints = -10;
 
 const DontDoItGame = props => {
     const cardService = new CardService();
@@ -42,16 +43,29 @@ const DontDoItGame = props => {
     }
 
     try {
-        if (props.location.aboutProps.isLocalPlay) {
+        if (props.location.aboutProps.onlineMode) {
             return (
                 <div className="main">
                     <h2>Don't do it!</h2>
+                    <div>Online Mode</div>
+                    <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
+                    <h1>Work-in-progress</h1>
+                </div>
+            );
+        }
 
-                    <HashLoader
-                        size={50}
-                        color="teal"
-                        loading={loader}
-                    />
+        else {
+            return (
+                <div className="main">
+                    <h2>{props.location.aboutProps.gameTitle}</h2>
+
+                    <div className="loader-position">
+                        <HashLoader
+                            size={50}
+                            color="teal"
+                            loading={loader}
+                        />
+                    </div>
 
                     {
                         !loader &&
@@ -65,7 +79,7 @@ const DontDoItGame = props => {
 
                                         <Card>
                                             {
-                                                points == -10 ?
+                                                points === losingPoints ?
                                                     <div className="action-card">
                                                         You lose!
                                                         </div> :
@@ -77,7 +91,7 @@ const DontDoItGame = props => {
 
                                         <div className="button-section">
                                             {
-                                                points == -10 ?
+                                                points === losingPoints ?
                                                     <Button
                                                         className="game-button"
                                                         variant="contained"
@@ -98,14 +112,16 @@ const DontDoItGame = props => {
                                         </div>
                                     </> :
                                     <>
-                                        <div className="game-logo">
-                                            <img
-                                                src="./assets/dont-do-it.jpg"
-                                                alt="Don't do it!"
-                                            />
-                                        </div>
+                                        <img
+                                            src="./assets/dont-do-it.jpg"
+                                            alt="Don't do it!"
+                                        />
 
-                                        <div>// Add game intructions here.</div>
+                                        <div className="instruction-card">
+                                            <Card >
+                                                {props.location.aboutProps.gameDescription}
+                                            </Card>
+                                        </div>
 
                                         <Button
                                             className="game-button"
@@ -119,17 +135,6 @@ const DontDoItGame = props => {
                             }
                         </>
                     }
-                </div>
-            );
-        }
-
-        else {
-            return (
-                <div className="main">
-                    <h2>Don't do it!</h2>
-                    <div>Online Mode</div>
-                    <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
-                    <h1>Work-in-progress</h1>
                 </div>
             );
         }
