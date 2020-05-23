@@ -2,8 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+In the project directory, install npm packages first, then you can run:
 
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.<br />
