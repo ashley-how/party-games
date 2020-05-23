@@ -67,7 +67,7 @@ const Home = () => {
     }, [])
 
     const getModeDetails = selectedMode => {
-        let res = modes.find(mode => mode.mode == selectedMode);
+        let res = modes.find(mode => mode.mode === selectedMode);
         return <div>{res.description}</div>;
     }
 
@@ -77,7 +77,7 @@ const Home = () => {
                 <HashLoader
                     size={50}
                     color="teal"
-                    loading={games.length === 0}
+                    loading={games.length === 0 || modes.length === 0}
                 />
             </div>
 
@@ -111,7 +111,7 @@ const Home = () => {
             }
 
             {
-                games.length > 0 && modes.length > 0 && 
+                modes.length > 0 &&
                 <>
                     <div className="mode-card">
                         <Card>
@@ -127,7 +127,7 @@ const Home = () => {
                                             />
                                         }
                                         label={
-                                        onlineMode ? <b>{GAME_MODE.ONLINE}</b> : <b>{GAME_MODE.OFFLINE}</b>
+                                            onlineMode ? <b>{GAME_MODE.ONLINE}</b> : <b>{GAME_MODE.OFFLINE}</b>
                                         }
                                     />
                                 </FormGroup>
