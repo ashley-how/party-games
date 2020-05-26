@@ -6,7 +6,8 @@ import {
     Button,
     Card
 } from '@material-ui/core';
-import HashLoader from "react-spinners/HashLoader";
+import PulseLoader from "react-spinners/PulseLoader";
+import Header from '../../components/header/header';
 
 const losingPoints = -10;
 
@@ -46,6 +47,7 @@ const DontDoItGame = props => {
         if (props.location.aboutProps.onlineMode) {
             return (
                 <div className="main">
+                    <Header />
                     <h2>Don't do it!</h2>
                     <div>Online Mode</div>
                     <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
@@ -57,14 +59,20 @@ const DontDoItGame = props => {
         else {
             return (
                 <div className="main">
+                    <Header />
                     <h2>{props.location.aboutProps.gameTitle}</h2>
-
                     <div className="loader-position">
-                        <HashLoader
-                            size={50}
-                            color="teal"
-                            loading={loader}
-                        />
+                        {
+                            loader &&
+                            <>
+                                <div>Loading</div>
+                                <PulseLoader
+                                    size={10}
+                                    color="cornflowerblue"
+                                    loading={loader}
+                                />
+                            </>
+                        }
                     </div>
 
                     {
@@ -102,7 +110,7 @@ const DontDoItGame = props => {
                                                         </Button> :
                                                     <Button
                                                         className="game-button"
-                                                        variant="outlined"
+                                                        variant="contained"
                                                         color="primary"
                                                         onClick={() => { drawNewCard() }}
                                                     >
@@ -125,7 +133,7 @@ const DontDoItGame = props => {
 
                                         <Button
                                             className="game-button"
-                                            variant="outlined"
+                                            variant="contained"
                                             color="secondary"
                                             onClick={() => startGame()}
                                         >

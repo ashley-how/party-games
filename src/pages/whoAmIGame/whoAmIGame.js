@@ -6,7 +6,8 @@ import {
     Button,
     Card
 } from '@material-ui/core';
-import HashLoader from "react-spinners/HashLoader";
+import PulseLoader from "react-spinners/PulseLoader";
+import Header from '../../components/header/header';
 
 const winningPoints = 5;
 
@@ -46,6 +47,7 @@ const WhoAmIGame = props => {
         if (props.location.aboutProps.onlineMode) {
             return (
                 <div className="main">
+                    <Header />
                     <h2>Who am I?</h2>
                     <div>Online Mode</div>
                     <div>Number of players: {props.location.aboutProps.numOfPlayers}</div>
@@ -57,14 +59,17 @@ const WhoAmIGame = props => {
         else {
             return (
                 <div className="main">
+                    <Header />
                     <h2>{props.location.aboutProps.gameTitle}</h2>
-
                     <div className="loader-position">
-                        <HashLoader
-                            size={50}
-                            color="teal"
-                            loading={loader}
-                        />
+                    <>
+                                <div>Loading</div>
+                                <PulseLoader
+                                    size={10}
+                                    color="cornflowerblue"
+                                    loading={loader}
+                                />
+                            </>
                     </div>
 
                     {
@@ -102,7 +107,7 @@ const WhoAmIGame = props => {
                                                         </Button> :
                                                     <Button
                                                         className="game-button"
-                                                        variant="outlined"
+                                                        variant="contained"
                                                         color="primary"
                                                         onClick={() => { drawNewCard() }}
                                                     >
@@ -126,7 +131,7 @@ const WhoAmIGame = props => {
 
                                         <Button
                                             className="game-button"
-                                            variant="outlined"
+                                            variant="contained"
                                             color="secondary"
                                             onClick={() => startGame()}
                                         >

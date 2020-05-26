@@ -14,7 +14,7 @@ import {
     FormGroup,
     FormControlLabel
 } from '@material-ui/core';
-import HashLoader from "react-spinners/HashLoader";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const getImage = title => ({
     dontDoItGame:
@@ -72,13 +72,25 @@ const Home = () => {
     }
 
     return (
-        <div className="main">
+        <div className="main"> 
             <div className="loader-position">
-                <HashLoader
-                    size={50}
-                    color="teal"
-                    loading={games.length === 0 || modes.length === 0}
-                />
+                {
+                    (games.length === 0 || modes.length === 0) &&
+                    <>
+                        <img
+                            src="./assets/party-games-logo.png"
+                            alt="Party Game App"
+                            className="logo-header"
+                            height="100"
+                        />
+                        <div>Loading</div>
+                        <PulseLoader
+                            size={10}
+                            color="cornflowerblue"
+                            loading={games.length === 0 || modes.length === 0}
+                        />
+                    </>
+                }
             </div>
 
             {
