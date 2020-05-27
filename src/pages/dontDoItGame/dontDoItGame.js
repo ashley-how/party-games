@@ -8,7 +8,6 @@ import {
 } from '@material-ui/core';
 import PulseLoader from "react-spinners/PulseLoader";
 import Header from '../../components/header/header';
-import Deck from '../../components/deck/deck';
 
 const losingPoints = -10;
 
