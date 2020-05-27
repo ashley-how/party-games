@@ -62,7 +62,9 @@ const WhoAmIGame = props => {
                     <Header />
                     <h2>{props.location.aboutProps.gameTitle}</h2>
                     <div className="loader-position">
-                    <>
+                        {
+                            loader &&
+                            <>
                                 <div>Loading</div>
                                 <PulseLoader
                                     size={10}
@@ -70,6 +72,7 @@ const WhoAmIGame = props => {
                                     loading={loader}
                                 />
                             </>
+                        }
                     </div>
 
                     {

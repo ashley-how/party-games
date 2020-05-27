@@ -5,6 +5,12 @@ export default class CardService {
         });
     }
 
+    getAllActionCards = (signal = null) => {
+        return fetch('getAllActionCards', { signal: signal }).then(res => res.json()).then(data => {
+            return data.result;
+        });
+    }
+
     getCharacterCard = (signal = null) => {
         return fetch('https://party-games-api.herokuapp.com/getCharacterCard', { signal: signal }).then(res => res.json()).then(data => {
             return data.result;

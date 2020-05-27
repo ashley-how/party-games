@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import PulseLoader from "react-spinners/PulseLoader";
 import Header from '../../components/header/header';
+import Deck from '../../components/deck/deck';
 
 const losingPoints = -10;
 
@@ -16,6 +17,7 @@ const DontDoItGame = props => {
     const [actionCard, setActionCard] = useState(null);
     const [points, setPoints] = useState(0);
     const [loader, setLoader] = useState(false);
+    const [actionCards, setActionCards] = useState([]);
 
     const abortCtrl = new AbortController();
 
@@ -30,6 +32,8 @@ const DontDoItGame = props => {
         const timer = setTimeout(async () => {
             let data = await cardService.getActionCard(abortCtrl.signal);
             setActionCard(data);
+            let allData = await cardService.getAllActionCards(abortCtrl.signal);
+            setActionCards(allData);
             setLoader(false);
         }, 1500);
         return () => {

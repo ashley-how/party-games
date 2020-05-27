@@ -1,20 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './home.css'
+import { Card, CardContent, CardMedia, FormControlLabel, FormGroup, Grid, Input, Slider, Switch, Typography } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import GameService from '../../services/gameService';
-import {
-    Card,
-    CardContent,
-    CardMedia,
-    Typography,
-    Switch,
-    Slider,
-    Grid,
-    Input,
-    FormGroup,
-    FormControlLabel
-} from '@material-ui/core';
 import PulseLoader from "react-spinners/PulseLoader";
+import GameService from '../../services/gameService';
+import './home.css';
 
 const getImage = title => ({
     dontDoItGame:
